@@ -1,0 +1,213 @@
+/* Основні стилі для тіла сторінки */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    color: black;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    flex-direction: column;
+    margin: 0;
+    padding-top: 50px; /* Відступ зверху */
+}
+
+/* Стилі для контейнера форми */
+.container {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    transition: background 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 20px;
+    overflow: visible;
+}
+
+/* Додаємо анімовану лінію навколо контейнера */
+.container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    border-radius: 8px;
+    background: radial-gradient(circle, rgba(255, 255, 0, 0.3), rgba(0, 0, 0, 0) 80%);
+    animation: animateGlow 2s ease-in-out infinite;
+    z-index: -1;
+}
+
+/* Анімація для зміни світла */
+@keyframes animateGlow {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 255, 0, 0.5), 0 0 50px rgba(255, 255, 0, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 0, 0.3), 0 0 80px rgba(255, 255, 0, 0.6);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255, 255, 0, 0.5), 0 0 50px rgba(255, 255, 0, 0.7);
+    }
+}
+
+/* Стилі для інпутів і текстових полів */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border 0.3s ease-in-out, background 0.3s ease-in-out;
+    animation: typingEffect 1s ease-in-out;
+}
+
+/* Анімація введення тексту */
+@keyframes typingEffect {
+    0% {
+        border-color: #ccc;
+    }
+    50% {
+        border-color: #007bff;
+    }
+    100% {
+        border-color: #ccc;
+    }
+}
+
+/* При фокусі на інпуті чи текстовому полі змінюється колір рамки */
+input:focus, textarea:focus {
+    border: 1px solid blue;
+    outline: none;
+}
+
+/* Стилі для кнопки */
+button {
+    width: 100%;
+    padding: 10px;
+    background: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* При наведенні на кнопку змінюється її колір і масштаб */
+button:hover {
+    background: darkblue;
+    transform: scale(1.05);
+}
+
+/* Стилі для контейнера пароля */
+.password-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Темна тема */
+.dark-theme {
+    background-color: #333;
+    color: white;
+}
+
+/* Темна тема для контейнера */
+.dark-theme .container {
+    background: #444;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Стилі для інпутів і текстового поля в темній темі */
+.dark-theme input, .dark-theme textarea {
+    border: 1px solid #888;
+    background: #555;
+    color: white;
+}
+
+/* При фокусі на інпуті чи текстовому полі в темній темі змінюється колір рамки */
+.dark-theme input:focus, .dark-theme textarea:focus {
+    border: 1px solid cyan;
+}
+
+/* Стилі для кнопки в темній темі */
+.dark-theme button {
+    background: cyan;
+    color: black;
+}
+
+.dark-theme button:hover {
+    background: lightblue;
+}
+
+/* Стилі для поля коментаря (паралельні реєстрації) */
+.comment-container {
+    position: relative;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    transition: background 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-top: 20px;
+    overflow: visible;
+}
+
+/* Додаємо анімовану лінію навколо поля коментаря */
+.comment-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    border-radius: 8px;
+    background: radial-gradient(circle, rgba(255, 255, 0, 0.3), rgba(0, 0, 0, 0) 80%);
+    animation: animateGlow 2s ease-in-out infinite;
+    z-index: -1;
+}
+
+/* Стилі для коментарів в темній темі */
+.dark-theme .comment-container {
+    background: #444;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Стилі для інпутів і текстових полів коментарів в темній темі */
+.dark-theme .comment-container input, .dark-theme .comment-container textarea {
+    border: 1px solid #888;
+    background: #555;
+    color: white;
+}
+
+/* При фокусі на інпуті чи текстовому полі коментаря в темній темі змінюється колір рамки */
+.dark-theme .comment-container input:focus, .dark-theme .comment-container textarea:focus {
+    border: 1px solid cyan;
+}
+
+/* Кнопка зміни теми, яка розташована в верхньому лівому куті */
+#themeWrapper {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+/* Адаптивність для малих екранів */
+@media (max-width: 480px) {
+    .container, .comment-container {
+        padding: 15px;
+        width: 90%;
+    }
+
+    button {
+        padding: 12px;
+    }
+
+    input, textarea {
+        padding: 12px;
+    }
+}
