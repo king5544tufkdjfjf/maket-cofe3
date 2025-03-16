@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Кнопка для зміни теми -->
+    <div id="themeWrapper">
+        <button id="themeToggle">Змінити тему</button>
+    </div>
+
+    <div class="container">
+        <h2>Реєстрація</h2>
+        <form id="registrationForm">
+            <label for="username">Ім'я користувача</label>
+            <input type="text" id="username" placeholder="Ім'я користувача" required>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Email" required>
+            
+            <label for="password">Пароль</label>
+            <input type="password" id="password" placeholder="Пароль" required>
+            
+            <button type="submit">Зареєструватися</button>
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <!-- Поле для коментаря -->
+    <div class="comment-container">
+        <h3>Коментар</h3>
+        <textarea id="comment" placeholder="Ваш коментар..." rows="4"></textarea>
+        <button id="submitComment">Залишити коментар</button>
+        <p id="commentMessage"></p>
+    </div>
+
+    <script>
+        // Обробка форми реєстрації
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let username = document.getElementById('username').value;
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+            let message = document.getElementById('message');
+            
+            // Перевірка заповнених полів
+            if (username && email && password) {
+                // Перевірка на правильність формату email
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailPattern.test(email)) {
+                    message.innerText = 'Введіть коректний email!';
+                    message.style.color = 'red';
+                    return;
+                }
+                
+                message.innerText = 'Реєстрація успішна!';
+                message.style.color = 'green';
+            } else {
+                message.innerText = 'Заповніть всі поля!';
+                message.style.color = 'red';
+            }
+        });
+        
+        // Зміна теми
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+            localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+        });
+        
+        // Встановлення теми при завантаженні сторінки
+        window.onload = function() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.remove('dark-theme');
+            }
+        };
+
+        // Обробка коментаря
+        document.getElementById('submitComment').addEventListener('click', function() {
+            let comment = document.getElementById('comment').value;
+            let commentMessage = document.getElementById('commentMessage');
+            
+            if (comment) {
+                commentMessage.innerText = 'Ваш коментар надіслано!';
+                commentMessage.style.color = 'green';
+            } else {
+                commentMessage.innerText = 'Будь ласка, залиште коментар!';
+                commentMessage.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
